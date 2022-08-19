@@ -1,0 +1,30 @@
+.status {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.status-icon {
+  display: flex;
+  align-items: center;
+  color: var(--primaryColor);
+  background-color: var(--secondaryColor);
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--primaryColor);
+}
+
+.status-icon:hover {
+  color: var(--secondaryColor);
+  background-color: var(--primaryColor);
+  cursor: pointer;
+}
+
+.status-icon:active {
+  opacity: 0.5;
+}
+
+.clicked {
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+}

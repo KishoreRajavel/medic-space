@@ -1,0 +1,25 @@
+.detail-card {
+  gap: 10px;
+  width: 30rem;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details-line {
+  gap: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 15px 0;
+}
+
+.details-line .line {
+  display: flex;
+  gap: 10px;
+}
+
+.details-line .h4 {
+  border-top: 2px solid var(--bgPrimaryColor);
+}

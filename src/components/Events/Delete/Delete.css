@@ -1,0 +1,32 @@
+.delete-total {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 95%;
+  gap: 10px;
+}
+
+.delete-total h3 {
+  padding: 5px 0;
+  border-bottom: 2px solid var(--bgPrimaryColor);
+}
+
+.delete-total p {
+  color: var(--errorColor);
+}
+
+.delete-total h3,
+h4 {
+  font-style: normal;
+  font-weight: bold;
+}
+
+.delete-total .btn-area {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 10px 0px 5px 0;
+  border-top: 2px solid var(--bgPrimaryColor);
+}

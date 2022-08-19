@@ -1,0 +1,40 @@
+.billing {
+  width: 100%;
+  max-height: 100%;
+  display: flex;
+}
+
+.billing .left {
+  width: 60%;
+  max-height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.billing .line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.billing .search-area {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.billing .right {
+  width: 40%;
+
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.billing .detail-area {
+  height: 80%;
+  background-color: var(--secondaryColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

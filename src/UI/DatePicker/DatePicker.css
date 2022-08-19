@@ -1,0 +1,43 @@
+.date-picker {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 2rem;
+}
+
+.month-line {
+  display: flex;
+  font-size: 1rem;
+  gap: 20px;
+}
+
+.range-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+
+.arrow {
+  display: flex;
+}
+
+.arrow:hover {
+  cursor: pointer;
+  background-color: var(--secondaryColor);
+}
+
+.current-date-icon {
+  font-size: 2rem;
+  padding: 0px 10px;
+  border-radius: 5px;
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+}
+
+#ar-l:hover,
+#ar-r:hover {
+  font-size: 2rem;
+}

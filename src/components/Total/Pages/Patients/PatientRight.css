@@ -1,0 +1,21 @@
+.patient-right-area {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.patient-right-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.patient-right-area .text-area {
+  display: flex;
+  gap: 20px;
+}

@@ -1,0 +1,31 @@
+.billing-right {
+  max-height: 100%;
+  min-height: 100%;
+
+  background-color: var(--secondaryColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.payment-type {
+  width: 100%;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.payment-type h4 {
+  font-size: 1vw;
+}
+
+.al-c {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 5em;
+  height: 5em;
+  text-align: center;
+}

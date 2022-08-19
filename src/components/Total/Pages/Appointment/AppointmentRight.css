@@ -1,0 +1,32 @@
+.appointment-right-area {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.appointment-right-area .line {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+@media screen and (max-width: 1204px) {
+  .appointment-right-area .line {
+    flex-direction: column;
+  }
+}
+
+.detail-line h4 {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1250px) {
+  .picker {
+    max-width: 100%;
+    overflow-x: scroll;
+  }
+}

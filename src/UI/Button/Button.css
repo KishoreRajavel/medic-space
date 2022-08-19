@@ -1,0 +1,37 @@
+.btn {
+  color: var(--secondaryColor);
+  background-color: var(--primaryColor);
+  border: 1px solid var(--primaryColor);
+  border-radius: 5px;
+  padding: 10px 10px;
+  min-width: 5rem;
+}
+
+.btn:hover {
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  cursor: pointer;
+}
+
+.btn:active {
+  opacity: 0.5;
+}
+
+.red {
+  background-color: var(--errorColor);
+  border-color: var(--errorColor);
+}
+
+.red:hover {
+  color: var(--errorColor);
+}
+
+.cancel {
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+}
+
+.cancel:hover {
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+}
