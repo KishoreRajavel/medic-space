@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./PatientForm.css";
 import { TextField } from "@mui/material";
 import Button from "../../../../../UI/Button/Button";
+// import { db } from "../../../../../firebase";
+// import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+// import { UserAuth } from "../../../../../context/AuthContext";
 
 const PatientForm = ({
   cancelHandler,
@@ -13,7 +16,13 @@ const PatientForm = ({
 
   selectedPatient,
 }) => {
+  console.log(patients);
   // -----personal-------
+  // console.log(selectedPatient.official.tag);
+
+  // const { user } = UserAuth();
+
+  // const patientID = doc(db, "users", `${user?.email}`);
 
   const [firstName, setFirstName] = useState(
     editPatientState ? selectedPatient.personal.FirstName : ""
@@ -83,7 +92,7 @@ const PatientForm = ({
 
   // ----events------
 
-  const addPatientHandler = async (e) => {
+  const addPatientHandler = (e) => {
     e.preventDefault();
 
     if (
@@ -151,15 +160,18 @@ const PatientForm = ({
         },
       };
 
+      const id = selectedPatient.official.tag;
       if (editPatientState) {
-        const id = selectedPatient.official.tag;
+        // console.log(selectedPatient)
 
         for (let i = 0; i < patients.length; i++) {
           if (patients[i].official.tag === id) {
             patients.splice(i, 1, newPatient);
             break;
+            // await updateDoc(patientID, {
+            // patientList: newPatient[i],
+            // });
           }
-
           cancelHandler();
         }
       }
@@ -169,10 +181,15 @@ const PatientForm = ({
         setPatients((prev) => {
           return [...prev];
         });
+
+        // await updateDoc(patientID, {
+        //   patientList: arrayUnion({ newPatient }),
+        // });
         cancelHandler();
-      } else {
-        alert(`error`);
       }
+      // else {
+      //   alert(`error`);
+      // }
     }
   };
 

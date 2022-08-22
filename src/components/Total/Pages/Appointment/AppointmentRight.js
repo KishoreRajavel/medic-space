@@ -6,7 +6,7 @@ import DatePicker from "../../../../UI/DatePicker/DatePicker";
 
 const AppointmentRight = ({
   setNewAppointmentState,
-  arrivedCountValue,
+  // arrivedCountValue,
   patients,
   filterName,
   filterTag,
@@ -19,8 +19,8 @@ const AppointmentRight = ({
     setNewAppointmentState(() => true);
   };
 
-  const AppointmentCount = patients.filter(
-    (item) => item.appointment.appointment === "yes"
+  const AppointmentCount = patients?.filter(
+    (item) => item?.appointment.appointment === "yes"
   );
 
   return (
@@ -33,7 +33,7 @@ const AppointmentRight = ({
           <div>
             <h4>
               TOTAL APPOINTMENT:
-              {AppointmentCount.length}
+              {AppointmentCount?.length}
             </h4>
           </div>
         </div>

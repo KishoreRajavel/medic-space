@@ -70,9 +70,13 @@ const BillingRight = ({ selectedPatient, patientFoundState }) => {
       patientFoundState &&
       selectedPatient.appointment.appointment === "yes"
     ) {
-      selectedPatient.billing.billing = "yes";
-      selectedPatient.billing.amount = amount;
-      selectedPatient.billing.paymentType = paymentType;
+      if (amount === "" || paymentType === "") {
+        selectedPatient.billing.billing = "yes";
+        selectedPatient.billing.amount = amount;
+        selectedPatient.billing.paymentType = paymentType;
+      } else {
+        alert(`Please check whether all fields were filled`);
+      }
     } else {
       alert(`The Patient is not in the Appointment List `);
     }

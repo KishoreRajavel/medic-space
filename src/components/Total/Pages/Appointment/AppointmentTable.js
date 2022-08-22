@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./AppointmentTable.css";
 import TableUI from "../../../../UI/Table/Table";
 import TableCell from "@mui/material/TableCell";
@@ -35,14 +35,18 @@ const AppointmentTable = ({
           <>
             {filter.map(
               (item, i) =>
-                item.appointment.appointment === "yes" && (
-                  <TableRow key={item.official.tag}>
+                item?.appointment.appointment === "yes" && (
+                  <TableRow key={item?.official.tag}>
                     <TableCell component="th">
-                      {item.personal.FirstName}
+                      {item?.personal.FirstName}
                     </TableCell>
-                    <TableCell align="center">{item.official.token}</TableCell>
-                    <TableCell align="right">{item.appointment.date}</TableCell>
-                    <TableCell align="right">{item.appointment.time}</TableCell>
+                    <TableCell align="center">{item?.official.token}</TableCell>
+                    <TableCell align="right">
+                      {item?.appointment.date}
+                    </TableCell>
+                    <TableCell align="right">
+                      {item?.appointment.time}
+                    </TableCell>
                     <TableCell align="left">
                       <PatientStatus
                         setArrivedCountValue={setArrivedCountValue}
@@ -51,13 +55,13 @@ const AppointmentTable = ({
                     <TableCell>
                       <PatientAction
                         onClickProfile={() =>
-                          handlePatientProfile(item.official.tag)
+                          handlePatientProfile(item?.official.tag)
                         }
                         onClickDelete={() =>
-                          handleAppointmentDelete(item.official.tag)
+                          handleAppointmentDelete(item?.official.tag)
                         }
                         onClickEdit={() =>
-                          handleAppointmentEdit(item.official.tag)
+                          handleAppointmentEdit(item?.official.tag)
                         }
                       />
                     </TableCell>

@@ -15,6 +15,7 @@ const PatientRight = ({
     setNewPatientState(() => true);
   };
 
+  // console.log(patients);
   const appointmentCount = patients.filter(
     (item) => item.appointment.appointment === "yes"
   ).length;

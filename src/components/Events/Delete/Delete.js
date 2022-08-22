@@ -2,6 +2,9 @@ import React from "react";
 import "./Delete.css";
 import Modal from "../../../UI/Modal/Modal";
 import Button from "../../../UI/Button/Button";
+// import { UserAuth } from "../../../context/AuthContext";
+// import { db } from "../../../firebase";
+// import { UpdateDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
 
 const Delete = ({
   setDeleteState,
@@ -12,6 +15,9 @@ const Delete = ({
   appointmentDeleteState,
   setAppointmentDeleteState,
 }) => {
+  // const { user } = UserAuth();
+  // const patientRef = doc(db, `users`, `${user?.email}`);
+
   const cancelHandler = () => {
     if (deleteState) {
       setDeleteState(() => false);
@@ -21,9 +27,19 @@ const Delete = ({
     }
   };
 
-  const deleteHandler = () => {
+  const deleteHandler = async () => {
     if (deleteState) {
       setPatients(() => patients.filter((item) => item !== selectedPatient));
+
+      // try {
+      //   const result = patients.filter((item) => item !== selectedPatient);
+      //   await updateDoc(patientRef, {
+      //     patientList: result,
+      //   });
+      // } catch (err) {
+      //   alert(err);
+      // }
+
       setDeleteState(() => false);
     }
 
@@ -40,11 +56,11 @@ const Delete = ({
         <p>Are you sure you want to delete this patient from the list?</p>
         <div>
           <h4>Patient Name</h4>
-          {selectedPatient.personal.FirstName}
+          {selectedPatient?.personal.FirstName}
         </div>
         <div>
           <h4>Patient Tag</h4>
-          {selectedPatient.official.tag}
+          {selectedPatient?.official.tag}
         </div>
         <div className="btn-area">
           <Button cName={`cancel`} onClick={cancelHandler}>

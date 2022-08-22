@@ -18,4 +18,5 @@ h2 {
 .patient-right-area .text-area {
   display: flex;
   gap: 20px;
+  /* flex-wrap: wrap; */
 }

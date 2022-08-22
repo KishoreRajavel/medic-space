@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AppointmentForm.css";
 import Button from "../../../../../UI/Button/Button";
 import DatePicker from "../../../../../UI/DatePicker/DatePicker";
 import DetailCard from "../../../../../UI/DetailCard/DetailCard";
 import { TextField } from "@mui/material";
+// import { UserAuth } from "../../../../../context/AuthContext";
+// import { db } from "../../../../../firebase";
+// import { updateDoc, doc, onSnapshot } from "firebase/firestore";
+// import { async } from "@firebase/util";
 
 const AppointmentForm = ({
   newAppointmentState,
@@ -13,11 +17,23 @@ const AppointmentForm = ({
   setAppointmentEditState,
   selectedPatientEdit,
 }) => {
+  // const { user } = UserAuth();
+
+  // const [patients, setPatients] = useState([]);
+
+  // useEffect(() => {
+  //   onSnapshot(doc(db, `users`, `${user?.email}`), (doc) => {
+  //     setPatients(doc.data()?.patientList);
+  //   });
+  // }, [user?.email]);
+
+  // console.log(patients);
+
   const [patientFound, setPatientFound] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState();
 
   const [tagValue, setTagValue] = useState(
-    appointmentEditState ? selectedPatientEdit.official.tag : ""
+    appointmentEditState ? selectedPatientEdit?.official.tag : ""
   );
 
   const [dateValue, setDateValue] = useState(new Date());
@@ -27,7 +43,7 @@ const AppointmentForm = ({
 
   const findPatient = (id) => {
     const [patientSelected] = patients.filter(
-      (item) => item.official.tag === id
+      (item) => item?.official.tag === id
     );
     if (patientSelected) {
       setSelectedPatient(patientSelected);
@@ -47,35 +63,46 @@ const AppointmentForm = ({
     }
   };
 
+  // const patientID = doc(db, "users", `${user?.email}`);
+
   const addHandler = (e) => {
     e.preventDefault();
-    if (patientFound) {
-      selectedPatient.appointment.appointment = "yes";
-      if (!appointmentEditState) {
-        const newDate = `${dateValue.getDate()}-${
-          dateValue.getMonth() + 1
-        }-${dateValue.getFullYear()}`;
 
-        selectedPatient.appointment.date = newDate;
+    // await updateDoc(patientID, {
+
+    if (appointmentTime === "" || appointmentPurpose === "") {
+      alert(`Please check whether all fields are filled`);
+    } else {
+      if (patientFound) {
+        selectedPatient.appointment.appointment = "yes";
+        if (!appointmentEditState) {
+          const newDate = `${dateValue.getDate()}-${
+            dateValue.getMonth() + 1
+          }-${dateValue.getFullYear()}`;
+
+          selectedPatient.appointment.date = newDate;
+        }
+        if (appointmentEditState) {
+          const editDate = `${dateValue.getDate()}-${
+            dateValue.getMonth() + 1
+          }-${dateValue.getFullYear()}`;
+
+          selectedPatient.appointment.date = editDate;
+
+          console.log(editDate);
+        }
+        selectedPatient.appointment.time = appointmentTime;
+        selectedPatient.appointment.purpose = appointmentPurpose;
+        // --------billing-------
+        selectedPatient.billing.billing = "no";
+
+        cancelHandler();
       }
-      if (appointmentEditState) {
-        const editDate = `${dateValue.getDate()}-${
-          dateValue.getMonth() + 1
-        }-${dateValue.getFullYear()}`;
+      // });
 
-        selectedPatient.appointment.date = editDate;
-
-        console.log(editDate);
+      if (!patientFound) {
+        return;
       }
-      selectedPatient.appointment.time = appointmentTime;
-      selectedPatient.appointment.purpose = appointmentPurpose;
-      // --------billing-------
-      selectedPatient.billing.billing = "no";
-
-      cancelHandler();
-    }
-    if (!patientFound) {
-      return;
     }
   };
 
@@ -102,10 +129,6 @@ const AppointmentForm = ({
           <div>
             <Button onClick={() => findPatient(tagValue)}>Search</Button>
           </div>
-          {/* <div>
-            <h3>Create Patient</h3>
-            <Button>Create Patient</Button>
-          </div> */}
         </div>
         <div className="detail-card">
           {patientFound && <DetailCard selectedPatient={selectedPatient} />}

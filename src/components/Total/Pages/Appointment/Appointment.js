@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Appointment.css";
 import AppointmentRight from "./AppointmentRight";
 import AppointmentTable from "./AppointmentTable";
@@ -8,11 +8,22 @@ import DetailCard from "../../../../UI/DetailCard/DetailCard";
 import Delete from "../../../Events/Delete/Delete";
 import EditAppointment from "./EditAppointment";
 import PatientList from "../Patients/PatientsList";
+// import { UserAuth } from "../../../../context/AuthContext";
+// import { db } from "../../../../firebase";
+// import { updateDoc, doc, onSnapshot } from "firebase/firestore";
 
 const Appointment = () => {
-  const [arrivedCountValue, setArrivedCountValue] = useState(0);
+  // const { user } = UserAuth();
 
   const [patients, setPatients] = useState(PatientList);
+
+  // useEffect(() => {
+  //   onSnapshot(doc(db, `users`, `${user?.email}`), (doc) => {
+  //     setPatients(doc.data()?.patientList);
+  //   });
+  // }, [user?.email]);
+
+  // const [arrivedCountValue, setArrivedCountValue] = useState(0);
 
   // -------date-----
   const [dateValue, setDateValue] = useState(new Date());
@@ -61,7 +72,7 @@ const Appointment = () => {
               handlePatientProfile={handlePatientProfile}
               handleAppointmentDelete={handleAppointmentDelete}
               handleAppointmentEdit={handleAppointmentEdit}
-              setArrivedCountValue={setArrivedCountValue}
+              // setArrivedCountValue={setArrivedCountValue}
               // ----
               filterName={filterName}
               filterTag={filterTag}
@@ -71,7 +82,7 @@ const Appointment = () => {
           <div className="appointment-right">
             <AppointmentRight
               setNewAppointmentState={setNewAppointmentState}
-              arrivedCountValue={arrivedCountValue}
+              // arrivedCountValue={arrivedCountValue}
               patients={patients}
               // ----
               filterName={filterName}

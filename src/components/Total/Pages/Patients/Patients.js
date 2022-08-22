@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Patients.css";
 import PatientRight from "./PatientRight";
 import PatientTable from "./PatientTable";
@@ -8,8 +8,15 @@ import EditPatient from "./EditPatient";
 import Delete from "../../../Events/Delete/Delete";
 import Modal from "../../../../UI/Modal/Modal";
 import DetailCard from "../../../../UI/DetailCard/DetailCard";
+// import { UserAuth } from "../../../../context/AuthContext";
+// import { db } from "../../../../firebase";
+// import { UpdateDoc, doc, onSnapshot } from "firebase/firestore";
 
 const Patients = () => {
+  // const [patients, setPatients] = useState([]);
+
+  // const { user } = UserAuth();
+
   const [newPatientState, setNewPatientState] = useState(false);
   const [editPatientState, setEditPatientState] = useState(false);
   const [patientProfileState, setPatientprofileState] = useState(false);
@@ -17,6 +24,19 @@ const Patients = () => {
 
   const [patients, setPatients] = useState(PatientList);
 
+  // useEffect(() => {
+  //   onSnapshot(doc(db, `users`, `${user?.email}`), (doc) => {
+  //     setPatients(doc.data()?.patintList);
+  //   });
+  // }, [user]);
+
+  // useEffect(() => {
+  //   onSnapshot(doc(db, `users`, `${user?.email}`), (doc) => {
+  //     setPatients(doc.data()?.patientList);
+  //   });
+  // }, [user?.email]);
+
+  // console.log(patients);
   // ------filter---------
 
   const [filterName, setFilterName] = useState("");
@@ -31,13 +51,13 @@ const Patients = () => {
   };
 
   const handlePatientDelete = (id) => {
-    const [patient] = patients.filter((item) => item.official.tag === id);
+    const [patient] = patients.filter((item) => item?.official.tag === id);
     setSelectedPatient(() => patient);
     setDeleteState(() => true);
   };
 
   const handlePatientProfile = (id) => {
-    const [patient] = patients.filter((item) => item.official.tag === id);
+    const [patient] = patients.filter((item) => item?.official.tag === id);
     setSelectedPatient(() => patient);
     setPatientprofileState(() => true);
   };
